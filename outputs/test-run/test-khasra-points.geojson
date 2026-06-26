@@ -1,0 +1,39 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "khasra": "1",
+        "owner": "वन विभाग   हिस्सा- पूर्ण    संस्था के लिए",
+        "areaHectare": 878.39,
+        "khataNumber": "655",
+        "gisCode": "1809218670747029055001"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.73221323174207,
+          25.26893120798957
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "khasra": "2",
+        "owner": "वन विभाग   हिस्सा- पूर्ण    संस्था के लिए",
+        "areaHectare": 1.83,
+        "khataNumber": "655",
+        "gisCode": "1809218670747029055001"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.73845122270008,
+          25.27044624830786
+        ]
+      }
+    }
+  ]
+}

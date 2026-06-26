@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Khasra Points</name>
+    
+    <Placemark>
+      <name>1</name>
+      <description>Owner: वन विभाग   हिस्सा- पूर्ण    संस्था के लिए
+Area: 878.39 Hectare
+Khata: 655
+GIS Code: 1809218670747029055001</description>
+      <Point>
+        <coordinates>72.73221323174207,25.26893120798957,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>2</name>
+      <description>Owner: वन विभाग   हिस्सा- पूर्ण    संस्था के लिए
+Area: 1.83 Hectare
+Khata: 655
+GIS Code: 1809218670747029055001</description>
+      <Point>
+        <coordinates>72.73845122270008,25.27044624830786,0</coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>

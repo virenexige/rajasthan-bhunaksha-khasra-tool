@@ -1,0 +1,116 @@
+[
+  {
+    "ok": true,
+    "state": "08",
+    "levels": "18,092,1867,07470,29055,001,",
+    "location": {
+      "districtCode": "18",
+      "tehsilCode": "092",
+      "riCode": "1867",
+      "halkaCode": "07470",
+      "villageCode": "29055",
+      "sheetNo": "001"
+    },
+    "plotno": "1",
+    "sourceUrl": "https://bhunaksha.rajasthan.gov.in/Viewmap/ScalarDatahandler?OP=5&state=08&levels=18%2C092%2C1867%2C07470%2C29055%2C001%2C&plotno=1",
+    "detail": {
+      "plotNo": "1",
+      "id": "GeKDlv1QT3ar3hb2HudQCQ",
+      "gisCode": "1809218670747029055001",
+      "pniu": null,
+      "areaHectare": 878.39,
+      "khataNumber": "655",
+      "ownerText": "वन विभाग   हिस्सा- पूर्ण    संस्था के लिए",
+      "infoText": "क्षेत्रफल  : 878.3900 Hectare\nखाता संख्या   : 655\n1.) वन विभाग   हिस्सा- पूर्ण    संस्था के लिए  \n  \n   \n   \n",
+      "infoLines": [
+        "क्षेत्रफल  : 878.3900 Hectare",
+        "खाता संख्या   : 655",
+        "1.) वन विभाग   हिस्सा- पूर्ण    संस्था के लिए"
+      ],
+      "plotInfoLinksText": "📄 Nakal 📋 Same Owner Plot Report 🔒 Security Verification Please verify you are human ⟳ Refresh ✓ Verify ✗ Cancel",
+      "extent": {
+        "xmin": 268273.91132669954,
+        "ymin": 2793842.5341763105,
+        "xmax": 274914.3822262308,
+        "ymax": 2798560.3595189215
+      },
+      "center": {
+        "x": 271620.75800533727,
+        "y": 2796656.6274673636
+      },
+      "raw": {
+        "ymin": 2793842.5341763105,
+        "xmin": 268273.91132669954,
+        "plotNo": "1",
+        "plotInfoLinks": "<button onclick=\"openCaptcha('08', '1809218670747029055001', '1', 'N')\" style=\"cursor:pointer; margin:5px; padding:5px; background-color:#4CAF50; color:white; border:none; border-radius:3px;\">📄 Nakal</button><br /><button onclick=\"openCaptcha('08', '1809218670747029055001', '1', 'Y')\" style=\"cursor:pointer; margin:5px; padding:5px; background-color:#008CBA; color:white; border:none; border-radius:3px;\">📋 Same Owner Plot Report</button><br /><style>\n    .captcha-modal {\n        display: none;\n        position: fixed;\n        z-index: 9999;\n        left: 0;\n        top: 0;\n        width: 100%;\n        height: 100%;\n        background-color: rgba(0,0,0,0.5);\n    }\n    .captcha-modal-content {\n        background-color: #fefefe;\n        margin: 15% auto;\n        padding: 20px;\n        border: 1px solid #888;\n        width: 350px;\n        border-radius: 10px;\n        box-shadow: 0 4px 8px rgba(0,0,0,0.2);\n    }\n    .captcha-code {\n        font-size: 32px;\n        font-weight: bold;\n        letter-spacing: 10px;\n        background-color: #f0f0f0;\n        padding: 20px;\n        text-align: center;\n        font-family: monospace;\n        border: 1px solid #ccc;\n        margin: 10px 0;\n        user-select: none;\n    }\n    .captcha-input {\n        width: 95%;\n        padding: 8px;\n        margin: 10px 0;\n        font-size: 16px;\n        border: 1px solid #ccc;\n        border-radius: 5px;\n    }\n    .captcha-btn {\n        background-color: #4CAF50;\n        color: white;\n        padding: 10px 20px;\n        border: none;\n        cursor: pointer;\n        margin: 5px;\n        border-radius: 5px;\n    }\n    .captcha-btn:hover {\n        background-color: #45a049;\n    }\n    .captcha-refresh {\n        background-color: #008CBA;\n    }\n    .captcha-refresh:hover {\n        background-color: #007B9E;\n    }\n    .captcha-close {\n        background-color: #f44336;\n    }\n    .captcha-close:hover {\n        background-color: #da190b;\n    }\n    .error-msg {\n        color: red;\n        font-size: 12px;\n        margin-top: 5px;\n    }\n</style>\n<div id=\"captchaModal\" class=\"captcha-modal\">\n    <div class=\"captcha-modal-content\">\n        <h3>🔒 Security Verification</h3>\n        <p>Please verify you are human</p>\n        <div id=\"captchaCodeDisplay\" class=\"captcha-code\"></div>\n        <input type=\"text\" id=\"captchaInput\" class=\"captcha-input\" placeholder=\"Enter the code above\" autocomplete=\"off\">\n        <div id=\"captchaError\" class=\"error-msg\"></div>\n        <button class=\"captcha-btn captcha-refresh\" onclick=\"refreshCaptcha()\">⟳ Refresh</button>\n        <button class=\"captcha-btn\" onclick=\"verifyCaptcha()\">✓ Verify</button>\n        <button class=\"captcha-btn captcha-close\" onclick=\"closeCaptcha()\">✗ Cancel</button>\n    </div>\n</div>\n<script>\n    var pendingState = '', pendingGisCode = '', pendingPlotNo = '', pendingSameOwner = '';\n    var currentCaptcha = '';\n    \n    function generateCaptcha() {\n        var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';\n        var captcha = '';\n        for (var i = 0; i < 6; i++) {\n            captcha += chars.charAt(Math.floor(Math.random() * chars.length));\n        }\n        currentCaptcha = captcha;\n        var captchaDisplay = document.getElementById('captchaCodeDisplay');\n        if (captchaDisplay) {\n            captchaDisplay.innerHTML = captcha;\n        }\n        var captchaInput = document.getElementById('captchaInput');\n        if (captchaInput) {\n            captchaInput.value = '';\n        }\n        var errorMsg = document.getElementById('captchaError');\n        if (errorMsg) {\n            errorMsg.innerHTML = '';\n        }\n        return captcha;\n    }\n    \n    function refreshCaptcha() {\n        generateCaptcha();\n    }\n    \n    function openCaptcha(state, gisCode, plotNo, sameOwner) {\n        pendingState = state;\n        pendingGisCode = gisCode;\n        pendingPlotNo = plotNo;\n        pendingSameOwner = sameOwner;\n        generateCaptcha();\n        var modal = document.getElementById('captchaModal');\n        if (modal) {\n            modal.style.display = 'block';\n        }\n    }\n    \n    function closeCaptcha() {\n        var modal = document.getElementById('captchaModal');\n        if (modal) {\n            modal.style.display = 'none';\n        }\n        var errorMsg = document.getElementById('captchaError');\n        if (errorMsg) {\n            errorMsg.innerHTML = '';\n        }\n        var captchaInput = document.getElementById('captchaInput');\n        if (captchaInput) {\n            captchaInput.value = '';\n        }\n    }\n    \n    function verifyCaptcha() {\n        var userInput = document.getElementById('captchaInput').value;\n        if (userInput === currentCaptcha) {\n            var url = '08/plotreportRJ.jsp?state=' + pendingState + '&giscode=' + pendingGisCode + '&plotno=' + pendingPlotNo;\n            if (pendingSameOwner === 'Y') {\n                url += '&sameownerplotreport=Y';\n            }\n            window.open(url, '_blank');\n            closeCaptcha();\n        } else {\n            var errorMsg = document.getElementById('captchaError');\n            if (errorMsg) {\n                errorMsg.innerHTML = '❌ Invalid captcha! Please try again.';\n            }\n            refreshCaptcha();\n        }\n    }\n    \n    window.onclick = function(event) {\n        var modal = document.getElementById('captchaModal');\n        if (event.target === modal) {\n            closeCaptcha();\n        }\n    }\n</script>\n",
+        "attrs": "",
+        "has_data": "Y",
+        "ymax": 2798560.3595189215,
+        "xmax": 274914.3822262308,
+        "ID": "GeKDlv1QT3ar3hb2HudQCQ",
+        "gisCode": "1809218670747029055001",
+        "center_y": 2796656.6274673636,
+        "center_x": 271620.75800533727,
+        "info": "क्षेत्रफल  : 878.3900 Hectare\nखाता संख्या   : 655\n1.) वन विभाग   हिस्सा- पूर्ण    संस्था के लिए  \n  \n   \n   \n"
+      }
+    },
+    "error": null
+  },
+  {
+    "ok": true,
+    "state": "08",
+    "levels": "18,092,1867,07470,29055,001,",
+    "location": {
+      "districtCode": "18",
+      "tehsilCode": "092",
+      "riCode": "1867",
+      "halkaCode": "07470",
+      "villageCode": "29055",
+      "sheetNo": "001"
+    },
+    "plotno": "2",
+    "sourceUrl": "https://bhunaksha.rajasthan.gov.in/Viewmap/ScalarDatahandler?OP=5&state=08&levels=18%2C092%2C1867%2C07470%2C29055%2C001%2C&plotno=2",
+    "detail": {
+      "plotNo": "2",
+      "id": "TI-nFE6eSUSneW4-vpzb9g",
+      "gisCode": "1809218670747029055001",
+      "pniu": null,
+      "areaHectare": 1.83,
+      "khataNumber": "655",
+      "ownerText": "वन विभाग   हिस्सा- पूर्ण    संस्था के लिए",
+      "infoText": "क्षेत्रफल  : 1.8300 Hectare\nखाता संख्या   : 655\n1.) वन विभाग   हिस्सा- पूर्ण    संस्था के लिए  \n  \n   \n   \n",
+      "infoLines": [
+        "क्षेत्रफल  : 1.8300 Hectare",
+        "खाता संख्या   : 655",
+        "1.) वन विभाग   हिस्सा- पूर्ण    संस्था के लिए"
+      ],
+      "plotInfoLinksText": "📄 Nakal 📋 Same Owner Plot Report 🔒 Security Verification Please verify you are human ⟳ Refresh ✓ Verify ✗ Cancel",
+      "extent": {
+        "xmin": 272153.2329653562,
+        "ymin": 2796702.2374112927,
+        "xmax": 272320.4479817703,
+        "ymax": 2796928.060709553
+      },
+      "center": {
+        "x": 272251.9985340116,
+        "y": 2796813.867136089
+      },
+      "raw": {
+        "ymin": 2796702.2374112927,
+        "xmin": 272153.2329653562,
+        "plotNo": "2",
+        "plotInfoLinks": "<button onclick=\"openCaptcha('08', '1809218670747029055001', '2', 'N')\" style=\"cursor:pointer; margin:5px; padding:5px; background-color:#4CAF50; color:white; border:none; border-radius:3px;\">📄 Nakal</button><br /><button onclick=\"openCaptcha('08', '1809218670747029055001', '2', 'Y')\" style=\"cursor:pointer; margin:5px; padding:5px; background-color:#008CBA; color:white; border:none; border-radius:3px;\">📋 Same Owner Plot Report</button><br /><style>\n    .captcha-modal {\n        display: none;\n        position: fixed;\n        z-index: 9999;\n        left: 0;\n        top: 0;\n        width: 100%;\n        height: 100%;\n        background-color: rgba(0,0,0,0.5);\n    }\n    .captcha-modal-content {\n        background-color: #fefefe;\n        margin: 15% auto;\n        padding: 20px;\n        border: 1px solid #888;\n        width: 350px;\n        border-radius: 10px;\n        box-shadow: 0 4px 8px rgba(0,0,0,0.2);\n    }\n    .captcha-code {\n        font-size: 32px;\n        font-weight: bold;\n        letter-spacing: 10px;\n        background-color: #f0f0f0;\n        padding: 20px;\n        text-align: center;\n        font-family: monospace;\n        border: 1px solid #ccc;\n        margin: 10px 0;\n        user-select: none;\n    }\n    .captcha-input {\n        width: 95%;\n        padding: 8px;\n        margin: 10px 0;\n        font-size: 16px;\n        border: 1px solid #ccc;\n        border-radius: 5px;\n    }\n    .captcha-btn {\n        background-color: #4CAF50;\n        color: white;\n        padding: 10px 20px;\n        border: none;\n        cursor: pointer;\n        margin: 5px;\n        border-radius: 5px;\n    }\n    .captcha-btn:hover {\n        background-color: #45a049;\n    }\n    .captcha-refresh {\n        background-color: #008CBA;\n    }\n    .captcha-refresh:hover {\n        background-color: #007B9E;\n    }\n    .captcha-close {\n        background-color: #f44336;\n    }\n    .captcha-close:hover {\n        background-color: #da190b;\n    }\n    .error-msg {\n        color: red;\n        font-size: 12px;\n        margin-top: 5px;\n    }\n</style>\n<div id=\"captchaModal\" class=\"captcha-modal\">\n    <div class=\"captcha-modal-content\">\n        <h3>🔒 Security Verification</h3>\n        <p>Please verify you are human</p>\n        <div id=\"captchaCodeDisplay\" class=\"captcha-code\"></div>\n        <input type=\"text\" id=\"captchaInput\" class=\"captcha-input\" placeholder=\"Enter the code above\" autocomplete=\"off\">\n        <div id=\"captchaError\" class=\"error-msg\"></div>\n        <button class=\"captcha-btn captcha-refresh\" onclick=\"refreshCaptcha()\">⟳ Refresh</button>\n        <button class=\"captcha-btn\" onclick=\"verifyCaptcha()\">✓ Verify</button>\n        <button class=\"captcha-btn captcha-close\" onclick=\"closeCaptcha()\">✗ Cancel</button>\n    </div>\n</div>\n<script>\n    var pendingState = '', pendingGisCode = '', pendingPlotNo = '', pendingSameOwner = '';\n    var currentCaptcha = '';\n    \n    function generateCaptcha() {\n        var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';\n        var captcha = '';\n        for (var i = 0; i < 6; i++) {\n            captcha += chars.charAt(Math.floor(Math.random() * chars.length));\n        }\n        currentCaptcha = captcha;\n        var captchaDisplay = document.getElementById('captchaCodeDisplay');\n        if (captchaDisplay) {\n            captchaDisplay.innerHTML = captcha;\n        }\n        var captchaInput = document.getElementById('captchaInput');\n        if (captchaInput) {\n            captchaInput.value = '';\n        }\n        var errorMsg = document.getElementById('captchaError');\n        if (errorMsg) {\n            errorMsg.innerHTML = '';\n        }\n        return captcha;\n    }\n    \n    function refreshCaptcha() {\n        generateCaptcha();\n    }\n    \n    function openCaptcha(state, gisCode, plotNo, sameOwner) {\n        pendingState = state;\n        pendingGisCode = gisCode;\n        pendingPlotNo = plotNo;\n        pendingSameOwner = sameOwner;\n        generateCaptcha();\n        var modal = document.getElementById('captchaModal');\n        if (modal) {\n            modal.style.display = 'block';\n        }\n    }\n    \n    function closeCaptcha() {\n        var modal = document.getElementById('captchaModal');\n        if (modal) {\n            modal.style.display = 'none';\n        }\n        var errorMsg = document.getElementById('captchaError');\n        if (errorMsg) {\n            errorMsg.innerHTML = '';\n        }\n        var captchaInput = document.getElementById('captchaInput');\n        if (captchaInput) {\n            captchaInput.value = '';\n        }\n    }\n    \n    function verifyCaptcha() {\n        var userInput = document.getElementById('captchaInput').value;\n        if (userInput === currentCaptcha) {\n            var url = '08/plotreportRJ.jsp?state=' + pendingState + '&giscode=' + pendingGisCode + '&plotno=' + pendingPlotNo;\n            if (pendingSameOwner === 'Y') {\n                url += '&sameownerplotreport=Y';\n            }\n            window.open(url, '_blank');\n            closeCaptcha();\n        } else {\n            var errorMsg = document.getElementById('captchaError');\n            if (errorMsg) {\n                errorMsg.innerHTML = '❌ Invalid captcha! Please try again.';\n            }\n            refreshCaptcha();\n        }\n    }\n    \n    window.onclick = function(event) {\n        var modal = document.getElementById('captchaModal');\n        if (event.target === modal) {\n            closeCaptcha();\n        }\n    }\n</script>\n",
+        "attrs": "",
+        "has_data": "Y",
+        "ymax": 2796928.060709553,
+        "xmax": 272320.4479817703,
+        "ID": "TI-nFE6eSUSneW4-vpzb9g",
+        "gisCode": "1809218670747029055001",
+        "center_y": 2796813.867136089,
+        "center_x": 272251.9985340116,
+        "info": "क्षेत्रफल  : 1.8300 Hectare\nखाता संख्या   : 655\n1.) वन विभाग   हिस्सा- पूर्ण    संस्था के लिए  \n  \n   \n   \n"
+      }
+    },
+    "error": null
+  }
+]
