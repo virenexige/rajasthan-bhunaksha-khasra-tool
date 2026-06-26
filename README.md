@@ -1,20 +1,37 @@
-# Rajasthan Bhunaksha Khasra Batch Tool
+# Rajasthan Bhunaksha Khasra Tool
 
-This project fetches Khasra-wise land details from Rajasthan Bhunaksha and turns them into structured files that can be opened in spreadsheets, Google My Maps, and Google Earth.
+A Node.js command-line tool to fetch Rajasthan Bhunaksha Khasra details in batch and generate spreadsheet, Google My Maps, Google Earth, and GeoJSON outputs.
 
-Source site:
+Source website:
 
 ```text
 https://bhunaksha.rajasthan.gov.in/Viewmap/
 ```
 
-The tool currently supports Rajasthan state code `08`.
+The tool is designed for village-level Khasra lookup where manual searching on the Bhunaksha website is slow and repetitive.
 
-## What It Does
+## Project Structure
 
-For a selected village/sheet, it can fetch details for one Khasra, a list of Khasras, or a numeric range.
+```text
+rajasthan-bhunaksha-khasra-tool/
+├── src/
+│   ├── interactive-run.js      # Guided CLI workflow
+│   ├── batch-khasra.js         # Batch fetcher
+│   ├── bhunaksha-client.js     # Bhunaksha request/parser logic
+│   ├── export-map-files.js     # CSV, GeoJSON, KML map export
+│   └── server.js               # Optional local API server
+├── inputs/
+│   └── khasras.txt             # Example Khasra input file
+├── outputs/                    # Generated run output, ignored by Git
+├── package.json
+└── README.md
+```
 
-For every found Khasra, it extracts:
+`outputs/` is intentionally ignored by Git because the generated files can become large.
+
+## What It Fetches
+
+For every found Khasra, the batch output includes:
 
 - Khasra number
 - Owner details
@@ -22,37 +39,21 @@ For every found Khasra, it extracts:
 - Khata number
 - GIS code
 - Plot ID
-- Map center
-- Map extent
+- Projected map center and extent
 - Raw Bhunaksha response
+- Error status for missing/failed records
 
-It also converts Bhunaksha map coordinates into latitude/longitude, so the data can be used in:
+The map export also converts Bhunaksha projected coordinates to latitude/longitude for Google tools.
 
-- Google My Maps
-- Google Earth
-- GIS tools that support CSV, GeoJSON, or KML
+## Run The Guided Workflow
 
-## Requirements
-
-Install Node.js 18 or newer.
-
-Check:
-
-```bash
-node --version
-```
-
-No npm dependency install is required.
-
-## Recommended Run: Interactive Mode
-
-Run:
+Use this for normal use:
 
 ```bash
 npm run run
 ```
 
-The script will ask for:
+It asks for:
 
 - State code
 - District code
@@ -62,16 +63,10 @@ The script will ask for:
 - Village code
 - Sheet number
 - Khasra input mode
-- Output folder
-- Output file prefix
+- Output root folder
+- Run name
 
-You can choose one of three Khasra input modes:
-
-1. Range scan, for example `1` to `5000`
-2. Comma-separated list, for example `1,2,3`
-3. File path, one Khasra per line
-
-Default location values are set to:
+Default location values are currently set to:
 
 ```text
 State    : 08 Rajasthan
@@ -83,97 +78,92 @@ Village  : 29055
 Sheet No : 001
 ```
 
-The interactive run writes all output files into the folder you choose.
+## Output Folder Structure
 
-## Output Files
-
-For an output prefix like `mendakwas-khasra`, the tool generates:
+Every guided run creates a new folder using this pattern:
 
 ```text
-mendakwas-khasra.csv
-mendakwas-khasra.json
-mendakwas-khasra-google-map-points.csv
-mendakwas-khasra-points.geojson
-mendakwas-khasra-bounding-boxes.geojson
-mendakwas-khasra-google-earth-points.kml
+outputs/<run-name>/<yyyy-mm-dd>/
+├── csv/
+│   └── <run-name>.csv
+├── json/
+│   └── <run-name>.json
+└── maps/
+    ├── <run-name>-google-map-points.csv
+    ├── <run-name>-google-earth-points.kml
+    ├── <run-name>-points.geojson
+    └── <run-name>-bounding-boxes.geojson
 ```
 
-Main files:
-
-- `*.csv`: full tabular Khasra details
-- `*.json`: full structured data
-- `*-google-map-points.csv`: import this into Google My Maps
-- `*-points.geojson`: point layer for GIS tools
-- `*-bounding-boxes.geojson`: approximate rectangles from Bhunaksha extents
-- `*-google-earth-points.kml`: open this directly in Google Earth
-
-Important: the tool can draw center points and approximate bounding boxes. Exact parcel boundaries need actual polygon geometry from Bhunaksha, which is not present in the detail response we are using.
-
-## Google My Maps
-
-1. Open [Google My Maps](https://www.google.com/mymaps)
-2. Create a new map
-3. Click **Import**
-4. Upload:
+Example:
 
 ```text
-*-google-map-points.csv
+outputs/mendakwas-khasra/2026-06-26/
 ```
 
-5. Select location columns:
+Each run for the same project and date writes into the same date folder. Change the run name if you want a separate folder on the same day.
+
+## Input Modes
+
+The guided workflow supports three modes.
+
+### 1. Range Scan
+
+Example: scan `1` to `5000`, slowly, and stop after a long missing tail.
+
+Useful when you want to discover all available Khasra records for a village.
+
+### 2. Comma-Separated List
+
+Example:
 
 ```text
-latitude
-longitude
+1,2,3,10,15
 ```
 
-6. Select marker title:
+Useful when you only need specific Khasras.
+
+### 3. File Input
+
+Create a file like:
 
 ```text
-khasra
+inputs/khasras.txt
 ```
 
-Each marker will show owner, area, khata number, and GIS code.
-
-## Google Earth
-
-Use the KML file:
+With one Khasra per line:
 
 ```text
-*-google-earth-points.kml
+1
+2
+3
 ```
 
-### Google Earth Web
+Then select file input mode and provide the file path.
 
-1. Open [Google Earth](https://earth.google.com/web/)
-2. Open **Projects**
-3. Click **New project**
-4. Choose **Import KML file from computer**
-5. Select the generated `*-google-earth-points.kml`
+## Non-Interactive Commands
 
-### Google Earth Pro
-
-1. Open Google Earth Pro
-2. Go to **File > Open**
-3. Select the generated `*-google-earth-points.kml`
-
-Google Earth is useful because you can inspect the Khasra points along with satellite imagery, roads, terrain, rivers, water paths, and nearby land context.
-
-## Non-Interactive Batch Commands
-
-Fetch a fixed list:
+Fetch a specific list:
 
 ```bash
-npm run batch -- --khasras 1,2,3 --out outputs/khasra.csv --json-out outputs/khasra.json
+npm run batch -- \
+  --levels 18,092,1867,07470,29055,001 \
+  --khasras 1,2,3 \
+  --out outputs/manual/example.csv \
+  --json-out outputs/manual/example.json
 ```
 
 Fetch from a file:
 
 ```bash
-npm run batch -- --file khasras.txt --out outputs/khasra.csv --json-out outputs/khasra.json
+npm run batch -- \
+  --levels 18,092,1867,07470,29055,001 \
+  --file inputs/khasras.txt \
+  --out outputs/manual/example.csv \
+  --json-out outputs/manual/example.json
 ```
 
-Fetch a range slowly and stop after a long missing tail:
+Range scan:
 
 ```bash
 npm run batch -- \
@@ -184,76 +174,95 @@ npm run batch -- \
   --retries 2 \
   --retry-delay-ms 7000 \
   --stop-after-misses 200 \
-  --out outputs/all-khasra.csv \
-  --json-out outputs/all-khasra.json
+  --out outputs/manual/all-khasra.csv \
+  --json-out outputs/manual/all-khasra.json
 ```
 
 Generate map files from an existing JSON:
 
 ```bash
 npm run export-map -- \
-  outputs/all-khasra.json \
-  outputs/all-khasra-google-map-points.csv \
-  outputs/all-khasra-points.geojson \
-  outputs/all-khasra-bounding-boxes.geojson \
-  outputs/all-khasra-google-earth-points.kml
+  outputs/manual/all-khasra.json \
+  outputs/manual/all-khasra-google-map-points.csv \
+  outputs/manual/all-khasra-points.geojson \
+  outputs/manual/all-khasra-bounding-boxes.geojson \
+  outputs/manual/all-khasra-google-earth-points.kml
 ```
 
-## Location Codes
+## Google My Maps
 
-Bhunaksha needs six location levels:
+Use the generated file:
 
 ```text
-districtCode,tehsilCode,riCode,halkaCode,villageCode,sheetNo
+maps/<run-name>-google-map-points.csv
 ```
 
-Example:
+Steps:
+
+1. Open https://www.google.com/mymaps
+2. Create a new map
+3. Click **Import**
+4. Upload the `*-google-map-points.csv` file
+5. Choose `latitude` and `longitude` as location columns
+6. Choose `khasra` as the marker title
+
+Each marker contains owner, area, khata number, and GIS code.
+
+## Google Earth
+
+Use the generated file:
 
 ```text
-18,092,1867,07470,29055,001
+maps/<run-name>-google-earth-points.kml
 ```
 
-The tool sends this to Bhunaksha as:
+### Google Earth Web
 
-```text
-18,092,1867,07470,29055,001,
-```
+1. Open https://earth.google.com/web/
+2. Go to **Projects**
+3. Create a new project
+4. Import the KML file from your computer
 
-The trailing comma is expected by the Bhunaksha endpoint.
+### Google Earth Pro
+
+1. Open Google Earth Pro
+2. Select **File > Open**
+3. Choose the generated KML file
+
+Google Earth helps view Khasra points with satellite imagery, roads, terrain, rivers, water paths, and nearby land context.
+
+## Important Mapping Note
+
+The tool can draw:
+
+- Khasra center points
+- Approximate bounding boxes from Bhunaksha extents
+
+It cannot draw exact parcel boundaries unless Bhunaksha polygon geometry is available. The current detail endpoint gives center and extent, not full parcel polygons.
 
 ## Reliability Notes
 
-The Rajasthan Bhunaksha website can be slow and sometimes returns temporary failures like HTTP 502/503. The batch runner is intentionally slow and supports retries.
+The Rajasthan Bhunaksha site can be slow or intermittently return HTTP 502/503. The batch runner is intentionally conservative.
 
-Useful options:
+Recommended large-run settings:
 
 ```text
---delay-ms 2000
---retries 2
---retry-delay-ms 7000
---stop-after-misses 200
+Delay between requests: 2000 ms
+Retries per failed request: 2
+Retry delay: 7000 ms
+Stop after missing Khasras: 200
 ```
 
-For large village scans, keep the delay conservative.
+## Optional Local API
 
-## Existing API Server
-
-The project also includes a small local API server:
+Start the API server:
 
 ```bash
 npm start
 ```
 
-Default URL:
-
-```text
-http://127.0.0.1:3000
-```
-
-Single Khasra lookup:
+Single lookup example:
 
 ```bash
 curl 'http://127.0.0.1:3000/api/khasra/detail?levels=18,092,1867,07470,29055,001,&plotno=1'
 ```
-
-The interactive batch mode is usually easier for normal use.

@@ -1,13 +1,13 @@
 {
-  "name": "rajasthan-bhunaksha-khasra-api",
+  "name": "rajasthan-bhunaksha-khasra-tool",
   "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "run": "node interactive-run.js",
-    "start": "node server.js",
-    "batch": "node batch-khasra.js",
-    "export-map": "node export-map-files.js"
+    "run": "node src/interactive-run.js",
+    "start": "node src/server.js",
+    "batch": "node src/batch-khasra.js",
+    "export-map": "node src/export-map-files.js"
   },
   "engines": {
     "node": ">=18"
